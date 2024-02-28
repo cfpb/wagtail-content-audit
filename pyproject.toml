@@ -1,0 +1,108 @@
+[project]
+name = "wagtail-audit"
+dynamic = ["version"]
+description = "Tools for performing content audits of Wagtail sites"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "CC0"}
+authors = [
+    {name = "CFPB", email = "tech@cfpb.gov" }
+]
+dependencies = [
+    "wagtail>=5",
+    "queryish",
+]
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4",
+    "Framework :: Wagtail",
+    "Framework :: Wagtail :: 4",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "License :: Public Domain",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+testing = [
+    "coverage[toml]",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/cfpb/wagtail-audit"
+"Bug Reports" = "https://github.com/cfpb/wagtail-audit/issues"
+"Source" = "https://github.com/cfpb/wagtail-audit"
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+
+[tool.setuptools.package-data]
+wagtailaudit= [
+    "templates/wagtailaudit/*",
+]
+
+[tool.black]
+line-length = 79
+target-version = ["py38"]
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.tox
+    | \*.egg-info
+    | _build
+    | build
+    | dist
+    | migrations
+    | site
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 79
+lines_after_imports = 2
+skip = [".tox", ".venv", "venv"]
+known_django = ["django"]
+known_wagtail = ["wagtail"]
+default_section = "THIRDPARTY"
+sections = [
+    "STDLIB",
+    "DJANGO",
+    "WAGTAIL",
+    "THIRDPARTY",
+    "FIRSTPARTY",
+    "LOCALFOLDER"
+]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".tox",
+    "__pycache__",
+    "*/migrations/*.py",
+]
+
+[tool.ruff.lint]
+ignore = [
+    # Assigned Lambdas are fine.
+    "E731",
+]
+select = [
+    "E",
+    "F",
+    "W",
+]
+
+
+[tool.coverage.run]
+omit = [
+    "wagtailaudit/tests/*",
+]
