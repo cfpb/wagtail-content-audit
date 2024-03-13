@@ -2,8 +2,8 @@ from django.test import TestCase
 
 from wagtail.models import Page
 
-from wagtail_audit.tests.testapp.models import SearchTestPage
-from wagtail_audit.utils import dotted_name, get_page_models_and_fields
+from wagtail_content_audit.tests.testapp.models import SearchTestPage
+from wagtail_content_audit.utils import dotted_name, get_page_models_and_fields
 
 
 class UtilsTestCase(TestCase):
@@ -11,7 +11,7 @@ class UtilsTestCase(TestCase):
     def test_dotted_name(self):
         name = dotted_name(SearchTestPage)
         self.assertEqual(
-            name, "wagtail_audit.tests.testapp.models.SearchTestPage"
+            name, "wagtail_content_audit.tests.testapp.models.SearchTestPage"
         )
 
     def test_get_page_models_and_fields(self):

@@ -2,8 +2,8 @@ import csv
 
 from django.core.management.base import BaseCommand
 
-from wagtail_audit.query import BlockUsageQuerySet
-from wagtail_audit.utils import get_page_models_and_fields
+from wagtail_content_audit.query import PageSearchQuerySet
+from wagtail_content_audit.utils import get_page_models_and_fields
 
 
 class Command(BaseCommand):
@@ -27,43 +27,55 @@ class Command(BaseCommand):
                 "For example, v1.BrowsePage.content."
             ),
         )
+        parser.add_argument(
+            "-s",
+            "--search",
+            required=True,
+            help=(
+                "The search string to match. This can be a regular expression."
+            ),
+        )
 
     def handle(self, *args, **options):
+        search_string = options["search"]
         pagetypes = options["pagetype"]
 
-        audited_blocks_qs = BlockUsageQuerySet()
-
+        search_qs = PageSearchQuerySet().filter(search=search_string)
         if pagetypes is not None:
             for page_model, field_name in get_page_models_and_fields(
                 pagetypes
             ):
-                audited_blocks_qs = audited_blocks_qs.filter(
+                search_qs = search_qs.filter(
                     page_model=page_model, field=field_name
                 )
 
         writer = csv.writer(self.stdout)
         writer.writerow(
-            [
+            (
+                "Page ID",
                 "Page Type",
+                "Page Title",
+                "Page URL",
                 "Field",
-                "Path",
-                "Block",
-                "Occurrences",
-                "Pages",
-                "Live",
-                "In Default Site",
-            ]
+                "Field Type",
+                "Stream Field Path",
+                "Block Type",
+                "Result Path",
+                "Stream Field Matches",
+            )
         )
-        for audited_block in audited_blocks_qs.all():
+        for result in search_qs.all():
             writer.writerow(
-                [
-                    audited_block.page_model,
-                    audited_block.field,
-                    audited_block.path,
-                    audited_block.block,
-                    audited_block.total_occurrences,
-                    audited_block.pages_count,
-                    audited_block.pages_live_count,
-                    audited_block.pages_in_default_site_count,
-                ]
+                (
+                    result.page.id,
+                    result.page_model.__name__,
+                    result.page.title,
+                    result.page.url,
+                    result.field_name,
+                    result.field_type,
+                    ".".join(result.stream_field_path),
+                    result.block_type,
+                    ".".join(result.result_path),
+                    *result.matches,
+                )
             )

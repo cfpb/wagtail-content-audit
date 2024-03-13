@@ -5,7 +5,7 @@ from django.test import TestCase
 
 
 class BlockUsageCommandTestCase(TestCase):
-    fixtures = ["wagtail_audit_testapp_fixture.json"]
+    fixtures = ["wagtail_content_audit_testapp_fixture.json"]
 
     def test_usage(self):
         output = StringIO()

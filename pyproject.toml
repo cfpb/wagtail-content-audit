@@ -1,5 +1,5 @@
 [project]
-name = "wagtail-audit"
+name = "wagtail-content-audit"
 dynamic = ["version"]
 description = "Tools for performing content audits of Wagtail sites"
 readme = "README.md"
@@ -30,9 +30,9 @@ testing = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/cfpb/wagtail-audit"
-"Bug Reports" = "https://github.com/cfpb/wagtail-audit/issues"
-"Source" = "https://github.com/cfpb/wagtail-audit"
+"Homepage" = "https://github.com/cfpb/wagtail-content-audit"
+"Bug Reports" = "https://github.com/cfpb/wagtail-content-audit/issues"
+"Source" = "https://github.com/cfpb/wagtail-content-audit"
 
 [build-system]
 requires = ["setuptools>=64", "setuptools_scm>=8"]
@@ -41,8 +41,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 
 [tool.setuptools.package-data]
-wagtailaudit= [
-    "templates/wagtailaudit/*",
+wagtail_content_audit= [
+    "templates/wagtail_content_audit/*",
 ]
 
 [tool.black]
@@ -104,5 +104,5 @@ select = [
 
 [tool.coverage.run]
 omit = [
-    "wagtailaudit/tests/*",
+    "wagtail_content_audit/tests/*",
 ]

@@ -5,7 +5,7 @@ from django.test import TestCase
 
 
 class PageSearchCommandTestCase(TestCase):
-    fixtures = ["wagtail_audit_testapp_fixture.json"]
+    fixtures = ["wagtail_content_audit_testapp_fixture.json"]
 
     def test_search_streamfield(self):
         output = StringIO()

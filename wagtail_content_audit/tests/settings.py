@@ -13,7 +13,7 @@ SECRET_KEY = "not needed"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "wagtail_audit.sqlite",
+        "NAME": "wagtail_content_audit.sqlite",
     },
 }
 
@@ -55,8 +55,8 @@ INSTALLED_APPS = (
     )
     + WAGTAIL_APPS
     + (
-        "wagtail_audit",
-        "wagtail_audit.tests.testapp",
+        "wagtail_content_audit",
+        "wagtail_content_audit.tests.testapp",
     )
 )
 
@@ -86,7 +86,7 @@ TEMPLATES = [
 
 WAGTAIL_SITE_NAME = "Test Site"
 
-ROOT_URLCONF = "wagtail_audit.tests.urls"
+ROOT_URLCONF = "wagtail_content_audit.tests.urls"
 
 WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 

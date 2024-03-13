@@ -1,15 +1,15 @@
 from django.test import TestCase
 
-from wagtail_audit.query.blockusage import (
+from wagtail_content_audit.query.blockusage import (
     BlockUsageQuerySet,
     traverse_streamblock,
     traverse_streamvalue,
 )
-from wagtail_audit.tests.testapp.models import SearchTestPage
+from wagtail_content_audit.tests.testapp.models import SearchTestPage
 
 
 class BlockUsageTestCase(TestCase):
-    fixtures = ["wagtail_audit_testapp_fixture.json"]
+    fixtures = ["wagtail_content_audit_testapp_fixture.json"]
 
     def setUp(self):
         self.page_one = SearchTestPage.objects.get(id=3)

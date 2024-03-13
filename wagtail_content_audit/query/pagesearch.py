@@ -12,7 +12,7 @@ from wagtail.models import Page, Site, get_page_models
 
 from queryish import Queryish
 
-from wagtail_audit.utils import dotted_name
+from wagtail_content_audit.utils import dotted_name
 
 
 logger = logging.getLogger(__name__)

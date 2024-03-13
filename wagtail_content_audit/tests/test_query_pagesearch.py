@@ -2,12 +2,15 @@ import re
 
 from django.test import TestCase
 
-from wagtail_audit.query.pagesearch import PageSearchQuerySet, search_blocks
-from wagtail_audit.tests.testapp.models import SearchTestPage
+from wagtail_content_audit.query.pagesearch import (
+    PageSearchQuerySet,
+    search_blocks,
+)
+from wagtail_content_audit.tests.testapp.models import SearchTestPage
 
 
 class PageSearchTestCase(TestCase):
-    fixtures = ["wagtail_audit_testapp_fixture.json"]
+    fixtures = ["wagtail_content_audit_testapp_fixture.json"]
 
     def setUp(self):
         self.test_page = SearchTestPage.objects.get(id=3)
@@ -181,7 +184,7 @@ class PageSearchTestCase(TestCase):
         self.assertEqual(len(logging_context.output), 1)
         self.assertIn(
             (
-                "Cannot search wagtail_audit.tests.testapp.models."
+                "Cannot search wagtail_content_audit.tests.testapp.models."
                 "SearchTestPage.latest_revision."
             ),
             logging_context.output[0],

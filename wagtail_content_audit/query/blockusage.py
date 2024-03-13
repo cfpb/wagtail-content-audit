@@ -17,7 +17,7 @@ from wagtail.models import Site, get_page_models
 
 from queryish import Queryish
 
-from wagtail_audit.utils import dotted_name
+from wagtail_content_audit.utils import dotted_name
 
 
 @dataclass
