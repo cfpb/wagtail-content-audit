@@ -1,6 +1,6 @@
 [project]
 name = "wagtail-content-audit"
-dynamic = ["version"]
+version = "0.1"
 description = "Tools for performing content audits of Wagtail sites"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -9,15 +9,15 @@ authors = [
     {name = "CFPB", email = "tech@cfpb.gov" }
 ]
 dependencies = [
-    "wagtail>=5",
+    "django>=4.2",
+    "wagtail>=5.2",
     "queryish",
 ]
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
-    "Framework :: Django :: 4",
+    "Framework :: Django :: 4.2",
     "Framework :: Wagtail",
-    "Framework :: Wagtail :: 4",
+    "Framework :: Wagtail :: 5",
     "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
     "License :: Public Domain",
     "Programming Language :: Python",
@@ -35,7 +35,7 @@ testing = [
 "Source" = "https://github.com/cfpb/wagtail-content-audit"
 
 [build-system]
-requires = ["setuptools>=64", "setuptools_scm>=8"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
