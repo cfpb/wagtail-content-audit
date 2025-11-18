@@ -19,8 +19,8 @@ For Wagtail sites with deeply-nested blocks and a large amount of potentially ol
 
 ## Dependencies
 
-- Python 3.8+
-- Django 3.2 (LTS)+
+- Python 3.10+
+- Django 4.2 (LTS)+
 - Wagtail 5.2 (LTS)+
 
 It should be compatible at all intermediate versions, as well.
