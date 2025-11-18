@@ -172,9 +172,10 @@ class PageSearchTestCase(TestCase):
         self,
     ):
         queryset = PageSearchQuerySet().filter(search="Test")
-        with self.assertRaises(StopIteration), self.assertLogs(
-            level="INFO"
-        ) as logging_context:
+        with (
+            self.assertRaises(StopIteration),
+            self.assertLogs(level="INFO") as logging_context,
+        ):
             next(
                 queryset.get_matches_for_page_model_field(
                     SearchTestPage,
