@@ -1,6 +1,6 @@
 [project]
 name = "wagtail-content-audit"
-version = "0.1"
+version = "0.2"
 description = "Tools for performing content audits of Wagtail sites"
 readme = "README.md"
 requires-python = ">=3.10"
