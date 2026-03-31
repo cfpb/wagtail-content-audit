@@ -88,8 +88,8 @@ def traverse_streamvalue(value, parent=None):
             yield from traverse_streamvalue(child, parent=parent)
 
     elif isinstance(value, TypedTable):
-        for row_index, row in enumerate(value.rows):
-            for column_index, child in enumerate(row):
+        for row_index, row in enumerate(value.rows):  # noqa: B007
+            for column_index, child in enumerate(row):  # noqa: B007
                 yield from traverse_streamvalue(child, parent=parent)
 
     # This is a sequence of blocks
@@ -133,7 +133,7 @@ class BlockUsageQuerySet(Queryish):
             streamfield = page_model._meta.get_field(streamfield_name)
             page_blocks[streamfield_name] = {}
 
-            # Traverse child blocks of this stream field (this avpathoids capturing
+            # Traverse child blocks of this stream field (this avoids capturing
             # the containing stream block, so we can line-up with stream values
             # below)
             for child_block_name in streamfield.stream_block.child_blocks:
@@ -142,9 +142,9 @@ class BlockUsageQuerySet(Queryish):
                     streamfield.stream_block.child_blocks[child_block_name],
                 ):
                     audited_block.field = streamfield_name
-                    page_blocks[streamfield_name][
-                        audited_block.path
-                    ] = audited_block
+                    page_blocks[streamfield_name][audited_block.path] = (
+                        audited_block
+                    )
 
         # Get the default Wagtail site (this avoids the Trash)
         site = Site.objects.get(is_default_site=True)

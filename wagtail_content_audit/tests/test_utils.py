@@ -7,7 +7,6 @@ from wagtail_content_audit.utils import dotted_name, get_page_models_and_fields
 
 
 class UtilsTestCase(TestCase):
-
     def test_dotted_name(self):
         name = dotted_name(SearchTestPage)
         self.assertEqual(
