@@ -88,8 +88,8 @@ def traverse_streamvalue(value, parent=None):
             yield from traverse_streamvalue(child, parent=parent)
 
     elif isinstance(value, TypedTable):
-        for _row_index, row in enumerate(value.rows):
-            for _column_index, child in enumerate(row):
+        for row in value.rows:
+            for child in row:
                 yield from traverse_streamvalue(child, parent=parent)
 
     # This is a sequence of blocks
