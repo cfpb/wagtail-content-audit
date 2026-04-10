@@ -19,9 +19,9 @@ For Wagtail sites with deeply-nested blocks and a large amount of potentially ol
 
 ## Dependencies
 
-- Python 3.10+
-- Django 4.2 (LTS)+
-- Wagtail 5.2 (LTS)+
+- Python 3.12+
+- Django 5.2 (LTS)+
+- Wagtail 6.3 (LTS)+
 
 It should be compatible at all intermediate versions, as well.
 If you find that it is not, please [file an issue](https://github.com/cfpb/wagtail-flags/issues/new).
