@@ -32,13 +32,36 @@ prescribed by the project. In the absence of such guidelines, mimic the styles
 and patterns in the existing code-base.
 
 
-## Browser support
+## Style
 
-We configure our build chain tools
-(typically [Autoprefixer](https://github.com/postcss/autoprefixer)
-and [Babel](https://babeljs.io))
-to support a reasonable set of backward compatibility with older browsers.
+This project uses [`ruff`](https://docs.astral.sh/ruff/) to format code and sort imports
+and [`bandit`](https://bandit.readthedocs.io/en/latest/) to flag security issues.
 
-Please read up on
-[our current browser support guidance](https://github.com/cfpb/development/blob/main/guides/browser-support.md)
-and follow it when contributing to this project.
+You can format code and imports by calling:
+
+```
+ruff check --fix
+ruff format
+```
+
+You can check for style, import order, and other linting by using:
+
+```
+tox -e lint
+```
+
+
+## Release management
+
+To make a new release:
+
+1. Go to https://github.com/cfpb/wagtail-content-audit/releases/new
+1. Under the "Tag" drop-down, type the new version, incrementing the major, minor, or patch release digits as needed (for example, for a minor release on top of `0.3.0`, you'd enter `0.4.0`).
+1. Click "Create new tag"
+1. Leave target as `main`.
+1. Set the "Release title" to the same as the new tag, (e.g. `0.4.0`).
+1. Click "Generate release notes", make sure these look right.
+1. Click "Publish release".
+1. Under https://github.com/cfpb/wagtail-content-audit/actions, you should see a "Publish to PyPI" action running - observe it to make sure it completes without error.
+
+If all worked correctly, you should see your new version at https://pypi.org/project/wagtail-content-audit/.
