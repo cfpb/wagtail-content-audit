@@ -41,7 +41,7 @@ You can format code and imports by calling:
 
 ```
 ruff check --fix
-ruff-format
+ruff format
 ```
 
 You can check for style, import order, and other linting by using:
