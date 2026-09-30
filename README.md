@@ -1,3 +1,5 @@
+⚠️ The wagtail-content-audit library is no longer maintained and won't work with Wagtail 7.1 or later. ⚠️
+
 # wagtail-content-audit
 
 Content audit utilities for Wagtail. Still a work in progress.
